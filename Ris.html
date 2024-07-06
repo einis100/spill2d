@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Ris</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+    </style>
+<body>
+<style>
+    body {
+        background: black;
+    }
+</style>
+ 
+ <div style="position: relative; display: inline-block;">
+    
+    <div
+    style="
+     position: absolute;
+     display: flex;
+     width: 100%;
+     align-items: center;
+     padding: 20px; ">
+ 
+    <div style="position: relative; height: 30px; width: 100%; display: flex; justify-content: flex-end;">
+        <div style="background-color: yellow; height: 30px; width: 100%;"></div>
+ 
+      <div
+      id="playerHealth"
+      style="position: absolute;
+      background: blue;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      width: 100%;
+      "
+      ></div>
+     </div>
+ 
+
+     <div
+     id="timer"
+      style="
+      background-color: red;
+      width: 100px;
+      height: 100px;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: larger;
+      "
+     >
+     10
+    </div>
+ 
+     <div style="position: relative; height: 30px; width: 100%;">
+       <div style="background-color: yellow; height: 30px;"
+     ></div>
+ 
+     <div
+     id="enemyHealth"
+     style="position: absolute;
+     background: blue;
+     top: 0;
+     right: 0;
+     bottom: 0;
+     left: 0;"
+     ></div>
+    </div>
+     <div></div>
+   </div>
+   
+   <div
+   id="displayText"
+    style="
+    color: red;
+    position: absolute;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    display: none;
+    font-size: larger;
+    ">
+    Tie</div>
+    <canvas id="canvas"></canvas>
+    <script src="RisClasses.js"></script>
+    <script src="RisIndex.js"></script>
+    <script src="RisUtils.js"></script> 
+</head>
+ </div>   
+</body>

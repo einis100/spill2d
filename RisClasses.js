@@ -1,9 +1,8 @@
-
 class Sprite {
     constructor({position, imageSrc, scale = 1, framesMax = 1}) {
         this.position = position
-        this.width = 50
-        this.height = 150
+        this.width = 50*xZoom
+        this.height = 150*yZoom
         this.image = new Image()
         this.image.src = imageSrc
         this.scale = scale
@@ -54,12 +53,12 @@ class Fighter extends Sprite {
         this.lastKey
         this.attackBox = {
             position: {
-                x: this.position.x,
-                y: this.position.y
+                x: this.position.x*xZoom,
+                y: this.position.y*yZoom
             },
             offset,
-            width: 100,
-            height: 50,
+            width: 100*xZoom,
+            height: 50*yZoom
         }
         this.color = color
         this.isAttacking
@@ -150,4 +149,4 @@ class Fighter extends Sprite {
                 break
         }
     }
-}
+    }

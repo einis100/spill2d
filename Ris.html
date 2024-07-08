@@ -92,6 +92,17 @@
     ">
     Tie</div>
     <canvas id="canvas"></canvas>
+     <script>
+         let xZoom = 1;
+         let yZoom = 1;
+         window.addEventListener('resize', () => {
+             // Game was originally made for resolution 1366 x 768 which will use a zoom of 1
+             xZoom = window.innerWidth / 1366;
+             yZoom = window.innerHeight / 768;
+             console.log('Screen resized to:', window.innerWidth, window.innerHeight);
+         });
+         window.dispatchEvent(new Event('resize'));
+     </script>
     <script src="RisUtils.js"></script>
     <script src="RisClasses.js"></script>
     <script src="RisIndex.js"></script>

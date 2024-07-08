@@ -1,4 +1,3 @@
-
 const canvas = document.querySelector('canvas')
 const c = canvas.getContext('2d')
  
@@ -18,16 +17,17 @@ const background = new Sprite({
         x: 0,
         y: 0
     },
+    scale: xZoom,
     imageSrc: './images/background.png'
 })
  
 const shop = new Sprite({
     position: {
-        x: 520,
-        y: 50
+        x: 520*xZoom,
+        y: 50*yZoom
     },
     imageSrc: './images/Arturo shop.png',
-    scale: 2.75,
+    scale: 2.75*xZoom,
     framesMax: 6
 })
  
@@ -48,7 +48,7 @@ const player = new Fighter({
   },
   imageSrc: './images/Vegard Idle.png',
   framesMax: 2,
-  scale: 2.5,
+  scale: 2.5*xZoom,
   sprites: {
     idle: {
         imageSrc: './images/Vegard Idle.png',
@@ -84,8 +84,8 @@ const player = new Fighter({
  
 const enemy = new Fighter({
     position: {
-    x: 1150,
-    y: 100,
+    x: 1150*xZoom,
+    y: 100*yZoom,
   },
   velocity: {
     x: 0,
@@ -98,7 +98,7 @@ const enemy = new Fighter({
   },
   imageSrc: './images/Ola idle.png',
   framesMax: 2,
-  scale: 2.5,
+  scale: 2.5*xZoom,
   sprites: {
     idle: {
         imageSrc: './images/Ola idle.png',
@@ -313,40 +313,40 @@ window.addEventListener('keydown', (event) => {
 window.addEventListener('keyup', (event) => {
     switch (event.key) {
         case 'd':
-        keys.d.pressed = false
-        break
+            keys.d.pressed = false
+            break
         case 'D':
             keys.d.pressed = false
             break
         case 'a':
             keys.a.pressed = false
             break
-            case 'A':
-                keys.a.pressed = false
-                break
-            case 'w':
-                keys.w.pressed = false
-                break
-                case 'W':
-                    keys.w.pressed = false
-                    break
-                    case 'r':
-                        player.shootPressed = false;
-                        break
-                        case 'R':
-                            player.shootPressed = false;
-                            break
+        case 'A':
+            keys.a.pressed = false
+            break
+        case 'w':
+            keys.w.pressed = false
+            break
+        case 'W':
+            keys.w.pressed = false
+            break
+        case 'r':
+            player.shootPressed = false;
+            break
+        case 'R':
+            player.shootPressed = false;
+            break
     }
-        // enemy keys
-        switch (event.key) {
-         case 'ArrowRight' :
+    // enemy keys
+    switch (event.key) {
+        case 'ArrowRight' :
             keys.ArrowRight.pressed = false
             break
-            case 'ArrowLeft' :
-                keys.ArrowLeft.pressed = false
-                break
-                case 'ArrowUp' :
-                    keys.ArrowRight.pressed = false
-                    break
-                   }
+        case 'ArrowLeft' :
+            keys.ArrowLeft.pressed = false
+            break
+        case 'ArrowUp' :
+            keys.ArrowRight.pressed = false
+            break
+    }
 })

@@ -158,13 +158,6 @@ const keys = {
        }
     }
  
-    const SPEED = 3
-    const ROTATIONAL_SPEED = 0.05
-    const FRICTION = 0.97
- 
-    const projectiles = []
- 
- 
 function animate() {
     window.requestAnimationFrame(animate)
     c.fillStyle = 'white'

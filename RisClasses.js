@@ -51,12 +51,12 @@ class Fighter extends Sprite {
         this.lastKey
         this.attackBox = {
             position: {
-                x: this.position.x*xZoom,
-                y: this.position.y*yZoom
+                x: this.position.x * xZoom,
+                y: this.position.y * yZoom
             },
             offset,
-            width: 100*xZoom,
-            height: 50*yZoom
+            width: 100 * xZoom,
+            height: 50 * yZoom
         }
         this.color = color
         this.health = 100
@@ -129,13 +129,13 @@ class Fighter extends Sprite {
                     this.framesCurrent = 0
                 }
                 break
-                case 'fall':
-                    if (this.image !== this.sprites.fall.image) {
-                        this.image = this.sprites.fall.image
-                        this.framesMax = this.sprites.fall.framesMax
-                        this.framesCurrent = 0
-                    }
-                    break
+            case 'fall':
+                if (this.image !== this.sprites.fall.image) {
+                    this.image = this.sprites.fall.image
+                    this.framesMax = this.sprites.fall.framesMax
+                    this.framesCurrent = 0
+                }
+                break
             case 'attack1':
                 if (this.image !== this.sprites.attack1.image) {
                     this.image = this.sprites.attack1.image

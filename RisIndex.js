@@ -12,26 +12,18 @@ c.fillRect(0, 0, canvas.width, canvas.height)
 // Gravity
 const gravity = 0.98
  
-const background = new Sprite({
-    position: {
-        x: 0,
-        y: 0
-    },
-    scale: xZoom,
-    imageSrc: './images/background.png'
-})
+const backgroundImage = loadBackgroundImage('./images/background.png')
  
 const shop = new Sprite({
     position: {
-        x: 520*xZoom,
+        x: window.innerWidth/2 - 200*xZoom,
         y: 50*yZoom
     },
     imageSrc: './images/Arturo shop.png',
     scale: 2.75*xZoom,
     framesMax: 6
 })
- 
- 
+
  
 const player = new Fighter({
     position: {
@@ -48,7 +40,7 @@ const player = new Fighter({
   },
   imageSrc: './images/Vegard Idle.png',
   framesMax: 2,
-  scale: 2.5*xZoom,
+  scale: 2.5,
   sprites: {
     idle: {
         imageSrc: './images/Vegard Idle.png',
@@ -84,7 +76,7 @@ const player = new Fighter({
  
 const enemy = new Fighter({
     position: {
-    x: 1150*xZoom,
+    x: window.innerWidth - 213*xZoom,
     y: 100*yZoom,
   },
   velocity: {
@@ -98,7 +90,7 @@ const enemy = new Fighter({
   },
   imageSrc: './images/Ola idle.png',
   framesMax: 2,
-  scale: 2.5*xZoom,
+  scale: 2.5,
   sprites: {
     idle: {
         imageSrc: './images/Ola idle.png',
@@ -169,7 +161,7 @@ function animate() {
     window.requestAnimationFrame(animate)
     c.fillStyle = 'white'
     c.fillRect(0, 0, canvas.width, canvas.height)
-    background.update()
+    drawBackground(c, backgroundImage, xZoom, yZoom)
     shop.update()
     player.update()
     enemy.update()

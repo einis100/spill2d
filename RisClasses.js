@@ -99,6 +99,16 @@ class Fighter extends Sprite {
         }, 100)
     }
 
+    takeHit() {
+        this.health -= 10
+
+        if (this.health <= 0) {
+            this.switchSprite('death')
+        } else {
+            this.switchSprite('takeHit')
+        }
+    }
+
     switchSprite(sprite) {
         if (this.image === this.sprites.attack1.image && this.framesCurrent < this.sprites.attack1.framesMax - 1) return
 

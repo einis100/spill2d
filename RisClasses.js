@@ -1,8 +1,8 @@
 class Sprite {
     constructor({position, imageSrc, scale = 1, framesMax = 1}) {
         this.position = position
-        this.width = 50*xZoom
-        this.height = 150*yZoom
+        this.width = 50*zoom.x
+        this.height = 150*zoom.y
         this.image = new Image()
         this.image.src = imageSrc
         this.scale = scale
@@ -48,21 +48,17 @@ class Fighter extends Sprite {
     constructor({position, velocity, color = 'red', offset, imageSrc, scale = 1, framesMax = 1, sprites}) {
         super({position, imageSrc, scale, framesMax})
         this.velocity = velocity
-        this.width = 50
-        this.height = 150
         this.lastKey
         this.attackBox = {
             position: {
-                x: this.position.x*xZoom,
-                y: this.position.y*yZoom
+                x: this.position.x * zoom.x,
+                y: this.position.y * zoom.y
             },
             offset,
-            width: 100*xZoom,
-            height: 50*yZoom
+            width: 100 * zoom.x,
+            height: 50 * zoom.y
         }
         this.color = color
-        this.isAttacking
-        this.isShooting
         this.health = 100
         this.framesCurrent = 0
         this.framesElapsed = 0
@@ -133,13 +129,13 @@ class Fighter extends Sprite {
                     this.framesCurrent = 0
                 }
                 break
-                case 'fall':
-                    if (this.image !== this.sprites.fall.image) {
-                        this.image = this.sprites.fall.image
-                        this.framesMax = this.sprites.fall.framesMax
-                        this.framesCurrent = 0
-                    }
-                    break
+            case 'fall':
+                if (this.image !== this.sprites.fall.image) {
+                    this.image = this.sprites.fall.image
+                    this.framesMax = this.sprites.fall.framesMax
+                    this.framesCurrent = 0
+                }
+                break
             case 'attack1':
                 if (this.image !== this.sprites.attack1.image) {
                     this.image = this.sprites.attack1.image
@@ -149,4 +145,4 @@ class Fighter extends Sprite {
                 break
         }
     }
-    }
+}

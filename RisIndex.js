@@ -16,11 +16,11 @@ const backgroundImage = loadBackgroundImage('./images/background.png')
  
 const shop = new Sprite({
     position: {
-        x: window.innerWidth/2 - 200*xZoom,
-        y: 50*yZoom
+        x: window.innerWidth/2 - 200*zoom.x,
+        y: 50*zoom.y
     },
     imageSrc: './images/Arturo shop.png',
-    scale: 2.75*xZoom,
+    scale: 2.75*zoom.x,
     framesMax: 6
 })
 
@@ -76,8 +76,8 @@ const player = new Fighter({
  
 const enemy = new Fighter({
     position: {
-    x: window.innerWidth - 213*xZoom,
-    y: 100*yZoom,
+    x: window.innerWidth - 213*zoom.x,
+    y: 100*zoom.y,
   },
   velocity: {
     x: 0,
@@ -161,7 +161,7 @@ function animate() {
     window.requestAnimationFrame(animate)
     c.fillStyle = 'white'
     c.fillRect(0, 0, canvas.width, canvas.height)
-    drawBackground(c, backgroundImage, xZoom, yZoom)
+    drawBackground(c, backgroundImage, zoom)
     shop.update()
     player.update()
     enemy.update()

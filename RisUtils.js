@@ -65,11 +65,3 @@ function setZoom() {
     zoom.x = window.innerWidth / ORIGINAL_WIDTH;
     zoom.y = window.innerHeight / ORIGINAL_HEIGHT;
 }
-window.addEventListener('resize', () => {
-    setZoom();
-    animate()
-});
-
-window.addEventListener('load', () => {
-    setZoom();
-});

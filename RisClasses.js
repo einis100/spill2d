@@ -20,9 +20,9 @@ class Sprite {
             this.image.width / this.framesMax,
             this.image.height,
             this.position.x,
-            this.position.y,
-            (this.image.width / this.framesMax) * this.scale,
-            this.image.height * this.scale
+            (this.position.y - 100)/zoom.y,
+            (this.image.width / this.framesMax) * this.scale * zoom.x,
+            this.image.height * this.scale * zoom.y
         )
     }
 

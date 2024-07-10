@@ -16,15 +16,15 @@ const backgroundImage = loadBackgroundImage('./images/background.png')
  
 const shop = new Sprite({
     position: {
-        x: window.innerWidth/2 - 200*zoom.x,
-        y: 50*zoom.y
+        x: (window.innerWidth/2 - 150 * zoom.x), // Note: not updated on resize or load
+        y: 150 * zoom.y,
     },
     imageSrc: './images/Arturo shop.png',
     scale: 2.75*zoom.x,
     framesMax: 6
 })
 
- 
+
 const player = new Fighter({
     position: {
     x: 0,
@@ -69,11 +69,11 @@ const player = new Fighter({
         imageSrc: './images/Vegard death.png',
         framesMax: 2
     }
-   
+
   }
 })
- 
- 
+
+
 const enemy = new Fighter({
     position: {
     x: window.innerWidth - 213*zoom.x,
@@ -114,10 +114,10 @@ const enemy = new Fighter({
     }
   }
 })
- 
 
 
- 
+
+
 ///
 ///const rektor = new Sprite({
     //position: {
@@ -149,14 +149,14 @@ const keys = {
             pressed: false
        }
     }
- 
+
     const SPEED = 3
     const ROTATIONAL_SPEED = 0.05
     const FRICTION = 0.97
  
     const projectiles = []
- 
- 
+
+
 function animate() {
     window.requestAnimationFrame(animate)
     c.fillStyle = 'white'
@@ -169,17 +169,17 @@ function animate() {
 //        const projectiles = projectiles[i]
 //        projectile.update()
 //    }
- 
+
     enemy.velocity.x = 0
     player.velocity.x = 0
- 
+
     // player movement
     player.switchSprite('idle')
     if (keys.a.pressed && player.lastKey === 'a') {
         player.velocity.x = -6
         player.switchSprite('run')
     } else if (keys.d.pressed && player.lastKey === 'd') {
-        player.velocity.x = 6  
+        player.velocity.x = 6
         player.switchSprite('run')
     }
             // jumping player
@@ -188,13 +188,13 @@ function animate() {
             } else if(player.velocity.y > 0) {
               //  player.switchSprite('jump')
             }
- 
+
         // enemy movement
         if (keys.ArrowLeft.pressed && enemy.lastKey === 'ArrowLeft') {
             enemy.velocity.x = -6
             enemy.switchSprite('run')
         } else if (keys.ArrowRight.pressed && enemy.lastKey === 'ArrowRight') {
-            enemy.velocity.x = 6  
+            enemy.velocity.x = 6
             enemy.switchSprite('run')
         } else {
             enemy.switchSprite('idle')
@@ -205,7 +205,7 @@ function animate() {
             } else if(enemy.velocity.y > 0) {
               //  enemy.switchSprite('jump')
             }
- 
+
         // detect for collision and hit animation
         if (
         rectangularCollision({
@@ -219,7 +219,7 @@ function animate() {
             player.isAttacking = false
             document.querySelector('#enemyHealth').style.width = enemy.health + '%'
         }
- 
+
         if (
             rectangularCollision({
                 rectangle1: enemy,
@@ -233,15 +233,14 @@ function animate() {
                 enemy.isAttacking = false
                 document.querySelector('#playerHealth').style.width = player.health + '%'
             }
- 
+
             //end game based on health
             if (enemy.health <= 0 || player.health <= 0) {
                 determineWinner({player, enemy, timerId})
             }
 }
- 
- 
-animate()
+
+
 // Kontrollere
 window.addEventListener('keydown', (event) => {
     if (!player.dead) {
@@ -278,8 +277,8 @@ window.addEventListener('keydown', (event) => {
                     break
         }
     }
-   
- 
+
+
     if (!enemy.dead){
     switch (event.key) {
                     // Enemy controls
@@ -293,7 +292,7 @@ window.addEventListener('keydown', (event) => {
                          break
                          case 'ArrowUp':
                         enemy.velocity.y = -20
-                       
+
                           break
                           case ' ':
                             enemy.attack()
@@ -301,7 +300,7 @@ window.addEventListener('keydown', (event) => {
                         }
             }
 })
- 
+
 window.addEventListener('keyup', (event) => {
     switch (event.key) {
         case 'd':
@@ -345,9 +344,9 @@ window.addEventListener('keyup', (event) => {
 
 window.addEventListener('resize', () => {
     setZoom();
-    animate()
 });
 
 window.addEventListener('load', () => {
     setZoom();
+    animate()
 });

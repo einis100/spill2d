@@ -42,14 +42,14 @@ function loadBackgroundImage(imageSrc) {
     return image
 }
 
- function drawBackground(c, image, xZoom, yZoom) {
+ function drawBackground(c, image, zoom) {
     if (!image) return
     c.drawImage(
         image,
         0,
         0,
         window.innerWidth,
-        window.innerHeight + 145*yZoom // There is a gap at the bottom of the image we don't want to show
+        window.innerHeight + 145*zoom.y // There is a gap at the bottom of the image we don't want to show
     )
 }
 
@@ -57,12 +57,13 @@ function loadBackgroundImage(imageSrc) {
 const ORIGINAL_WIDTH = 1366;
 const ORIGINAL_HEIGHT = 768;
 
-let xZoom = 1;
-let yZoom = 1;
-
+const zoom = {
+    x: 1,
+    y: 1
+}
 function setZoom() {
-    xZoom = window.innerWidth / ORIGINAL_WIDTH;
-    yZoom = window.innerHeight / ORIGINAL_HEIGHT;
+    zoom.x = window.innerWidth / ORIGINAL_WIDTH;
+    zoom.y = window.innerHeight / ORIGINAL_HEIGHT;
 }
 window.addEventListener('resize', () => {
     setZoom();

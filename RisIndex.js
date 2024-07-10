@@ -335,3 +335,12 @@ window.addEventListener('keyup', (event) => {
             break
     }
 })
+
+window.addEventListener('resize', () => {
+    setZoom();
+    animate()
+});
+
+window.addEventListener('load', () => {
+    setZoom();
+});

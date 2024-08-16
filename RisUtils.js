@@ -34,4 +34,34 @@ function rectangularCollision({rectangle1, rectangle2}) {
     if (timer === 0) {
         determineWinner({player, enemy, timerId})
     }
- }  
+ }
+
+function loadBackgroundImage(imageSrc) {
+    const image = new Image()
+    image.src = imageSrc
+    return image
+}
+
+ function drawBackground(c, image, zoom) {
+    if (!image) return
+    c.drawImage(
+        image,
+        0,
+        0,
+        window.innerWidth,
+        window.innerHeight + 145*zoom.y // There is a gap at the bottom of the image we don't want to show
+    )
+}
+
+// Game was originally made for resolution 1366 x 768 which will use a zoom of 1
+const ORIGINAL_WIDTH = 1366;
+const ORIGINAL_HEIGHT = 768;
+
+const zoom = {
+    x: 1,
+    y: 1
+}
+function setZoom() {
+    zoom.x = window.innerWidth / ORIGINAL_WIDTH;
+    zoom.y = window.innerHeight / ORIGINAL_HEIGHT;
+}

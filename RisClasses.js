@@ -1,8 +1,8 @@
 class Sprite {
     constructor({position, imageSrc, scale = 1, framesMax = 1}) {
         this.position = position
-        this.width = 50
-        this.height = 150
+        this.width = 50*zoom.x
+        this.height = 150*zoom.y
         this.image = new Image()
         this.image.src = imageSrc
         this.scale = scale
@@ -20,9 +20,9 @@ class Sprite {
             this.image.width / this.framesMax,
             this.image.height,
             this.position.x,
-            this.position.y,
-            (this.image.width / this.framesMax) * this.scale,
-            this.image.height * this.scale
+            (this.position.y - 100)/zoom.y,
+            (this.image.width / this.framesMax) * this.scale * zoom.x,
+            this.image.height * this.scale * zoom.y
         )
     }
 
@@ -48,21 +48,17 @@ class Fighter extends Sprite {
     constructor({position, velocity, color = 'red', offset, imageSrc, scale = 1, framesMax = 1, sprites}) {
         super({position, imageSrc, scale, framesMax})
         this.velocity = velocity
-        this.width = 50
-        this.height = 150
         this.lastKey
         this.attackBox = {
             position: {
-                x: this.position.x,
-                y: this.position.y
+                x: this.position.x * zoom.x,
+                y: this.position.y * zoom.y
             },
             offset,
-            width: 100,
-            height: 50,
+            width: 100 * zoom.x,
+            height: 50 * zoom.y
         }
         this.color = color
-        this.isAttacking
-        this.isShooting
         this.health = 100
         this.framesCurrent = 0
         this.framesElapsed = 0
@@ -133,13 +129,13 @@ class Fighter extends Sprite {
                     this.framesCurrent = 0
                 }
                 break
-                case 'fall':
-                    if (this.image !== this.sprites.fall.image) {
-                        this.image = this.sprites.fall.image
-                        this.framesMax = this.sprites.fall.framesMax
-                        this.framesCurrent = 0
-                    }
-                    break
+            case 'fall':
+                if (this.image !== this.sprites.fall.image) {
+                    this.image = this.sprites.fall.image
+                    this.framesMax = this.sprites.fall.framesMax
+                    this.framesCurrent = 0
+                }
+                break
             case 'attack1':
                 if (this.image !== this.sprites.attack1.image) {
                     this.image = this.sprites.attack1.image

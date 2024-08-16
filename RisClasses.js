@@ -1,4 +1,3 @@
-
 class Sprite {
     constructor({position, imageSrc, scale = 1, framesMax = 1}) {
         this.position = position
